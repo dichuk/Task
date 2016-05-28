@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Task</string>
+    <string name="create_task_fragment">Create a task</string>
+    <string name="home_fragment">Home</string>
+
+
+    <!--button text-->
+    <string name="save">Save</string>
+    <string name="back">Back</string>
+    <string name="add">Add</string>
+
+    <!--text view-->
+    <string name="comment">Comment</string>
+    <string name="name">Name</string>
+
+    <!--toasts-->
+    <string name="toast_please_fill">Please fill in all fields</string>
+</resources>

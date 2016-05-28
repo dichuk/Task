@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="action_bar">#00796B</color>
+    <color name="button">#00796B</color>
+    <color name="white">#ffffff</color>
+    <color name="background">#B6B6B6</color>
+    <color name="label_text">#009688</color>
+    <color name="text">#212121</color>
+
+</resources>
