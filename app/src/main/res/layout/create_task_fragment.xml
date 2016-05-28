@@ -27,7 +27,8 @@
 
         <EditText
             android:id="@+id/ed_comment"
-            style="@style/editTextStyle" />
+            style="@style/editTextStyle"
+            android:lines="3" />
     </LinearLayout>
 
     <LinearLayout

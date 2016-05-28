@@ -18,7 +18,6 @@ import com.example.task.model.Task;
  * Created by Misha Dichuk on 28.05.16.
  */
 public class CreateTaskFragment extends AbstractOnBackFragment {
-
     private View view;
     private EditText edName, edComment;
     private Button btnBack, btnSave;

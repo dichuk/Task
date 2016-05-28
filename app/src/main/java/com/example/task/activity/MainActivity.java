@@ -1,5 +1,6 @@
 package com.example.task.activity;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,12 +12,33 @@ import com.example.task.listener.OnBackPressedListener;
 public class MainActivity extends AppCompatActivity {
 
     public OnBackPressedListener backPressedListener;
+    private Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FragmentNavigationManagerController.navigationFragment(this, new HomeFragment(), getString(R.string.home_fragment));
+        String str = getString(R.string.home_fragment);
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+            str = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1).getName();
+        if (savedInstanceState != null) {
+            fragment = getSupportFragmentManager().getFragment(savedInstanceState, str);
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStackImmediate();
+            }
+        } else {
+            fragment = new HomeFragment();
+        }
+        FragmentNavigationManagerController.navigationFragment(this, fragment, str);
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        getSupportFragmentManager().putFragment(outState, getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1).getName(),
+                getSupportFragmentManager().findFragmentByTag(getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1).getName()));
+
     }
 
     @Override
@@ -32,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param backPressedListener
      */
+
     public void setBackPressedListener(OnBackPressedListener backPressedListener) {
         this.backPressedListener = backPressedListener;
     }

@@ -1,7 +1,6 @@
 package com.example.task.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +34,6 @@ public class TaskBaseAdapter extends BaseAdapter {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
     public void setList(Task task) {
         tasks.add(task);
     }
@@ -65,7 +63,6 @@ public class TaskBaseAdapter extends BaseAdapter {
             view.setTag(holder);
         } else
             holder = (ViewHolder) view.getTag();
-
 
         Task task = getItem(position);
         if (null != task) {

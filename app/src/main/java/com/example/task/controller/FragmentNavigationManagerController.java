@@ -19,8 +19,11 @@ public class FragmentNavigationManagerController {
      * @param tag
      */
     public static void navigationFragment(FragmentActivity activity, Fragment fragment, String tag) {
+        if (activity.getSupportFragmentManager().getBackStackEntryCount() > 0)
+            activity.getSupportFragmentManager().popBackStackImmediate();
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, fragment, tag);
+        transaction.addToBackStack(tag);
         transaction.commitAllowingStateLoss();
     }
 }

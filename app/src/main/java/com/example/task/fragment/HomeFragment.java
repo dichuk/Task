@@ -43,6 +43,8 @@ public class HomeFragment extends AbstractOnBackFragment {
             task = getArguments().getParcelable("task");
             temp.add(task);
             taskBaseAdapter.notifyDataSetChanged();
+        } else {
+            temp = new ArrayList<>();
         }
         return view;
     }
@@ -76,7 +78,12 @@ public class HomeFragment extends AbstractOnBackFragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelable("saveTask", new Task(task.getName(), task.getComment()));
+        if (null != task)
+            outState.putParcelable("saveTask", new Task(task.getName(), task.getComment()));
+        else {
+            task = getArguments().getParcelable("task");
+            outState.putParcelable("saveTask", new Task(task.getName(), task.getComment()));
+        }
         super.onSaveInstanceState(outState);
     }
 
